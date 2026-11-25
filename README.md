@@ -36,7 +36,7 @@ python -m http.server 8000
 
 Every push to `main` publishes the site automatically with GitHub Pages.
 
-## Replace before launch
+## Next steps before launch
 
-Look for images marked as placeholders and swap in real photos (keep the alt text accurate). Check all contact details, opening hours and prices.
-
+- Replace the demo photography (picsum.photos) with your own high-resolution bakery, product and cake images kept in an `/images/` folder.
+- Check all contact details, opening hours and prices are accurate.
