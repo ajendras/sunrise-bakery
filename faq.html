@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Sunrise Bakery</title>
+    <meta name="description" content="Answers to common questions about our eggless cakes, custom orders and fresh bakes.">
+    <meta property="og:title" content="FAQ — Sunrise Bakery Jaipur">
+    <meta property="og:description" content="Everything you need to know about ordering fresh bread, cookies and custom eggless cakes from us.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sunrise-bakery.github.io/sunrise-bakery/faq.html">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            --primary-dark: #854d0e;
+            --sand: #f5ede4;
+            --olive: #5c6b4a;
+            --terracotta: #c56a2e;
+            --text: #3f2e1e;
+            --light: #fffaf0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            color: var(--text);
+            background-color: var(--sand);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+        
+        header {
+            background-color: rgba(245, 237, 228, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e8d9c7;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        
+        .logo svg {
+            width: 38px;
+            height: 38px;
+        }
+        
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: var(--primary);
+            padding: 0.25rem;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 73px;
+            left: 0;
+            right: 0;
+            background: var(--sand);
+            padding: 2rem 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            z-index: 999;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu a {
+            font-size: 1.25rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e8d9c7;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #f5ede4 0%, #f0e4d2 100%);
+            padding: 5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--olive);
+        }
+        
+        .faq-container {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        
+        .accordion-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        .accordion-header {
+            padding: 1.5rem 1.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            transition: background 0.2s ease;
+        }
+        
+        .accordion-header:hover {
+            background: #fffaf0;
+        }
+        
+        .accordion-header .icon {
+            font-size: 1.6rem;
+            color: var(--terracotta);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            line-height: 1;
+        }
+        
+        .accordion-item.active .icon {
+            transform: rotate(45deg);
+        }
+        
+        .accordion-content {
+            padding: 0 1.75rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #5c4733;
+        }
+        
+        .accordion-content p {
+            padding-bottom: 1.75rem;
+            font-size: 1.05rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgb(181 83 9 / 0.3);
+        }
+        
+        footer {
+            background: #3f2e1e;
+            color: #f5ede4;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        
+        .footer-col h3 {
+            color: #f5d8b8;
+            margin-bottom: 1.25rem;
+            font-size: 1.35rem;
+        }
+        
+        .footer-col a {
+            color: #f5ede4;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.65rem;
+        }
+        
+        .footer-col a:hover {
+            color: #ffcb91;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #25D366;
+            color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgb(37 211 102 / 0.4);
+            z-index: 9999;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+        
+        .floating-whatsapp span {
+            font-size: 32px;
+            line-height: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .hamburger {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 3.75rem;
+            }
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+        
+        .focus-visible {
+            outline: 4px solid #c56a2e;
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                        <circle cx="19" cy="13" r="7" fill="#f59e0b"/>
+                        <path d="M8 26C8 21 12 18 19 18C26 18 30 21 30 26" stroke="#b45309" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M12 29H26" stroke="#b45309" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                    Sunrise
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="cakes.html">Custom Cakes</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="faq.html" class="active">FAQ</a></li>
+                    <li><a href="contact.html">Visit Us</a></li>
+                </ul>
+                
+                <button onclick="toggleMobileMenu()" class="hamburger" aria-label="Toggle menu">☰</button>
+            </nav>
+        </div>
+        
+        <div id="mobile-menu" class="mobile-menu container">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu &amp; Prices</a>
+            <a href="cakes.html">Custom Cakes</a>
+            <a href="about.html">Our Story</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact &amp; Visit</a>
+            <a href="#" onclick="openWhatsApp(); return false;" style="background:#b45309;color:white;border-radius:9999px;padding:1rem 2rem;text-align:center;margin-top:1rem;">Order on WhatsApp</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Frequently Asked Questions</h1>
+                <p>Everything you want to know about our fresh bakes, eggless cakes and ordering process</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top:1rem;">
+        <div class="container">
+            <div class="faq-container" id="faq-container">
+                <!-- Populated by JavaScript -->
+            </div>
+            
+            <div style="text-align:center;margin:4rem 0 2rem;">
+                <p style="font-size:1.1rem;color:#6b553f;max-width:460px;margin:0 auto 2rem;">Still have questions? We’re happy to help.</p>
+                <a onclick="openWhatsApp(true); return false;" class="btn btn-primary">Ask us on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color:#f5d8b8;font-size:2rem;margin-bottom:1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 38 38" fill="none">
+                            <circle cx="19" cy="13" r="7" fill="#f5d8b8"/>
+                            <path d="M8 26C8 21 12 18 19 18C26 18 30 21 30 26" stroke="#f5d8b8" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                        Sunrise Bakery
+                    </div>
+                    <p style="max-width:260px;color:#d4b89a;">Baking with love in Jaipur. Fresh bread, eggless cakes, and cookies every single day.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="menu.html">Our Menu</a>
+                    <a href="cakes.html">Custom Cakes</a>
+                    <a href="about.html">Our Story</a>
+                    <a href="faq.html">Frequently Asked Questions</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <a href="tel:+919000000000">+91 90000 00000</a>
+                    <a onclick="openWhatsApp(); return false;" href="#">WhatsApp us</a>
+                    <a href="contact.html">Visit the bakery</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Hours</h3>
+                    <div style="color:#d4b89a;line-height:1.8;">
+                        Daily<br>
+                        <strong style="color:#f5ede4;">8:00 am – 9:00 pm</strong>
+                    </div>
+                    <div style="margin-top:2rem;font-size:0.8rem;color:#a88c6e;">
+                        © 2026 Sunrise Bakery<br>
+                        Family owned &amp; run
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top:4rem;padding-top:2rem;border-top:1px solid #5c4733;text-align:center;font-size:0.8rem;color:#a88c6e;">
+                Made with ❤️ for the families of Jaipur
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="#" onclick="openWhatsApp(); return false;" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+        <span>💬</span>
+    </a>
+
+    <script>
+        const faqs = [
+            {
+                question: "Are all your cakes eggless?",
+                answer: "Yes. Every single cake we bake is 100% egg-free."
+            },
+            {
+                question: "How far in advance should I order a custom cake?",
+                answer: "We recommend placing custom cake orders in advance."
+            },
+            {
+                question: "Do you offer delivery?",
+                answer: "Please contact us via WhatsApp for delivery information."
+            },
+            {
+                question: "What flavours can I choose for my custom cake?",
+                answer: "We offer a range of eggless flavours and can create custom flavours on request."
+            },
+            {
+                question: "Can I provide my own design or theme?",
+                answer: "Absolutely. Send us photos, colour schemes, or a rough sketch via WhatsApp. Our team will create a personalised design that matches your celebration perfectly."
+            },
+            {
+                question: "Is your bread baked fresh every day?",
+                answer: "Yes. All our bread, cookies and cakes are baked fresh daily."
+            },
+            {
+                question: "What are your payment options?",
+                answer: "We accept various payment methods. Custom orders require an advance payment."
+            },
+            {
+                question: "Is there parking near the bakery?",
+                answer: "Yes. Parking is available in C-Scheme."
+            }
+        ];
+        
+        function renderFAQs() {
+            const container = document.getElementById('faq-container');
+            container.innerHTML = '';
+            
+            faqs.forEach((faq, index) => {
+                const item = document.createElement('div');
+                item.className = 'accordion-item';
+                item.innerHTML = `
+                    <div class="accordion-header" data-index="${index}">
+                        <span>${faq.question}</span>
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>${faq.answer}</p>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+            
+            // Add click listeners
+            const headers = document.querySelectorAll('.accordion-header');
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.parentElement;
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all others
+                    document.querySelectorAll('.accordion-item').forEach(el => {
+                        el.classList.remove('active');
+                        const content = el.querySelector('.accordion-content');
+                        content.style.maxHeight = null;
+                    });
+                    
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const content = item.querySelector('.accordion-content');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+        }
+        
+        function openWhatsApp(isCustom = false) {
+            let message = "Hello%20Sunrise%20Bakery!%20I%20would%20like%20to%20place%20an%20order.";
+            if (isCustom) {
+                message = "Hello!%20I%27d%20like%20to%20ask%20a%20question%20about%20your%20cakes.";
+            }
+            const url = `https://wa.me/919000000000?text=${message}`;
+            window.open(url, '_blank');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            renderFAQs();
+            
+            // Close mobile menu when clicking a link
+            document.addEventListener('click', function(e) {
+                const menu = document.getElementById('mobile-menu');
+                if (menu.classList.contains('active') && !e.target.closest('header')) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            // Keyboard escape support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape") {
+                    const menu = document.getElementById('mobile-menu');
+                    if (menu.classList.contains('active')) menu.classList.remove('active');
+                }
+            });
+            
+            // Reduced motion
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                const style = document.createElement('style');
+                style.innerHTML = `.accordion-content { transition: none !important; }`;
+                document.head.appendChild(style);
+            }
+            
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqs.map(faq => ({
+                    "@type": "Question",
+                    "name": faq.question,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": faq.answer
+                    }
+                }))
+            });
+            document.head.appendChild(script);
+            
+            console.log('%c✅ Sunrise Bakery FAQ page ready', 'color:#b45309; font-family:monospace');
+        });
+    </script>
+</body>
+</html>

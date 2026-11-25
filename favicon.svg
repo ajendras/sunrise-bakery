@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Sunrise Bakery Loaf</title>
+  <desc id="desc">Stylized illustration of a fresh-baked loaf of bread in warm terracotta and golden tones</desc>
+  
+  <!-- Main loaf body - soft, organic bread shape with rounded crust -->
+  <path 
+    d="M32 108 
+      Q32 132 38 148 
+      Q50 172 88 175 
+      Q125 177 157 157 
+      Q177 135 182 102 
+      Q182 68 157 49 
+      Q125 32 88 44 
+      Q55 55 40 75 
+      Q32 85 32 108 Z" 
+    fill="#e8b88a" 
+    stroke="#b45309" 
+    stroke-width="26" 
+    stroke-linejoin="round" />
+
+  <!-- Crust scoring lines (typical bread slashes) - placed along the upper curve -->
+  <path 
+    d="M52 105 
+      Q68 78 85 68" 
+    fill="none" 
+    stroke="#c56a2e" 
+    stroke-width="8" 
+    stroke-linecap="round" />
+
+  <path 
+    d="M79 107 
+      Q98 76 119 71" 
+    fill="none" 
+    stroke="#c56a2e" 
+    stroke-width="8" 
+    stroke-linecap="round" />
+
+  <path 
+    d="M115 113 
+      Q130 85 150 83" 
+    fill="none" 
+    stroke="#c56a2e" 
+    stroke-width="7.5" 
+    stroke-linecap="round" />
+
+  <!-- Bottom crust highlight for dimension and warmth -->
+  <path 
+    d="M46 142 
+      Q62 160 93 163 
+      Q130 162 157 148" 
+    fill="none" 
+    stroke="#d97c38" 
+    stroke-width="9" 
+    opacity="0.55" />
+
+  <!-- Tiny crumb detail (subtle texture) -->
+  <circle r="5" cx="38" cy="165" fill="#d9a46f" opacity="0.7" />
+  <circle r="3.5" cx="172" cy="158" fill="#d9a46f" opacity="0.6" />
+
+</svg>

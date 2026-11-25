@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu &amp; Prices | Sunrise Bakery</title>
+    <meta name="description" content="Fresh daily bread, eggless cookies, pastries and cakes with transparent prices. All baked every morning in our C-Scheme Jaipur kitchen.">
+    <meta property="og:title" content="Menu &amp; Prices — Sunrise Bakery Jaipur">
+    <meta property="og:description" content="See our full range of fresh loaves, 100% eggless cookies, pastries and celebration cakes with clear pricing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sunrise-bakery.github.io/sunrise-bakery/menu.html">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            --primary-dark: #854d0e;
+            --sand: #f5ede4;
+            --olive: #5c6b4a;
+            --terracotta: #c56a2e;
+            --text: #3f2e1e;
+            --light: #fffaf0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            color: var(--text);
+            background-color: var(--sand);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+        
+        header {
+            background-color: rgba(245, 237, 228, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e8d9c7;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        
+        .logo svg {
+            width: 38px;
+            height: 38px;
+        }
+        
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .nav-links a.active:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            bottom: -6px;
+            left: 0;
+        }
+        
+        .hamburger {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: var(--primary);
+            padding: 0.25rem;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 73px;
+            left: 0;
+            right: 0;
+            background: var(--sand);
+            padding: 2rem 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            z-index: 999;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu a {
+            font-size: 1.25rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e8d9c7;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #f5ede4 0%, #f0e4d2 100%);
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -100px;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(197, 106, 46, 0.12) 30%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero-content .tagline {
+            font-size: 1.4rem;
+            color: var(--olive);
+            font-weight: 500;
+        }
+        
+        section {
+            padding: 4.5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+        }
+        
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+        
+        .menu-category h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid #e8d9c7;
+            display: inline-block;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .menu-item {
+            background: white;
+            padding: 1.75rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
+        }
+        
+        .item-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .item-price {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+        
+        .item-desc {
+            color: #6b553f;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .item-unit {
+            font-size: 0.85rem;
+            color: #8c6640;
+            font-weight: 400;
+        }
+        
+        .menu-note {
+            background: #f0e6d6;
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            max-width: 720px;
+            margin: 4rem auto 0;
+            font-size: 1.1rem;
+            color: #5c4733;
+        }
+        
+        .note-highlight {
+            display: inline-block;
+            background: #fff;
+            padding: 4px 18px;
+            border-radius: 9999px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background: #3f2e1e;
+            color: #f5ede4;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        
+        .footer-col h3 {
+            color: #f5d8b8;
+            margin-bottom: 1.25rem;
+            font-size: 1.35rem;
+        }
+        
+        .footer-col a {
+            color: #f5ede4;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.65rem;
+        }
+        
+        .footer-col a:hover {
+            color: #ffcb91;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #25D366;
+            color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgb(37 211 102 / 0.4);
+            z-index: 9999;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+        
+        .floating-whatsapp span {
+            font-size: 32px;
+            line-height: 1;
+        }
+        
+        .blob {
+            position: absolute;
+            background: rgba(197, 106, 46, 0.1);
+            border-radius: 50% 30% 60% 40%;
+            z-index: 0;
+            animation: blob-float 25s infinite linear;
+        }
+        
+        @keyframes blob-float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(80px, 60px) rotate(360deg); }
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .hamburger {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 3.8rem;
+            }
+            .menu-items {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+        
+        .focus-visible {
+            outline: 4px solid #c56a2e;
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                        <circle cx="19" cy="13" r="7" fill="#f59e0b"/>
+                        <path d="M8 26C8 21 12 18 19 18C26 18 30 21 30 26" stroke="#b45309" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M12 29H26" stroke="#b45309" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                    Sunrise
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html" class="active">Menu</a></li>
+                    <li><a href="cakes.html">Custom Cakes</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Visit Us</a></li>
+                </ul>
+                
+                <button onclick="toggleMobileMenu()" class="hamburger" aria-label="Toggle menu">☰</button>
+            </nav>
+        </div>
+        
+        <div id="mobile-menu" class="mobile-menu container">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu &amp; Prices</a>
+            <a href="cakes.html">Custom Cakes</a>
+            <a href="about.html">Our Story</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact &amp; Visit</a>
+            <a href="#" onclick="openWhatsApp(); return false;" style="background:#b45309;color:white;border-radius:9999px;padding:1rem 2rem;text-align:center;margin-top:1rem;">Order on WhatsApp</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div style="display:inline-flex; align-items:center; gap:12px; background:#fff0e0; padding:8px 22px; border-radius:9999px; font-size:1rem; color:#854d0e; margin-bottom:1.25rem;">
+                    🌾 BAKED FRESH DAILY
+                </div>
+                <h1>Our Menu</h1>
+                <p class="tagline">Handcrafted breads, 100% eggless treats and cakes from our family oven in C-Scheme</p>
+                
+                <div style="margin-top: 2.5rem; font-size: 1rem; color: #6b553f; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div>🥖 Fresh bread</div>
+                    <div>🍪 Eggless cookies</div>
+                    <div>🧁 Pastries &amp; cakes</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="blob" style="width:220px;height:160px;bottom:-30px;left:10%;animation-delay:4s;"></div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div id="menu-list" class="menu-container"></div>
+            
+            <div class="menu-note">
+                <div class="note-highlight">IMPORTANT</div>
+                <p>All our cakes are completely eggless. Custom flavours and sizes are available — just message us on WhatsApp. Prices are subject to change based on seasonal ingredients.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color:#f5d8b8;font-size:2rem;margin-bottom:1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 38 38" fill="none">
+                            <circle cx="19" cy="13" r="7" fill="#f5d8b8"/>
+                            <path d="M8 26C8 21 12 18 19 18C26 18 30 21 30 26" stroke="#f5d8b8" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                        Sunrise Bakery
+                    </div>
+                    <p style="max-width:260px;color:#d4b89a;">Baking with love in Jaipur. Fresh bread, eggless cakes and cookies daily.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="menu.html">Our Menu</a>
+                    <a href="cakes.html">Custom Cakes</a>
+                    <a href="about.html">Our Story</a>
+                    <a href="faq.html">Frequently Asked Questions</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <a href="tel:+919000000000">+91 90000 00000</a>
+                    <a onclick="openWhatsApp(); return false;" href="#">WhatsApp us</a>
+                    <a href="contact.html">Visit the bakery</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Hours</h3>
+                    <div style="color:#d4b89a;line-height:1.8;">
+                        Daily<br>
+                        <strong style="color:#f5ede4;">8:00 am – 9:00 pm</strong>
+                    </div>
+                    <div style="margin-top:2rem;font-size:0.8rem;color:#a88c6e;">
+                        © 2026 Sunrise Bakery<br>
+                        Family owned &amp; run
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top:4rem;padding-top:2rem;border-top:1px solid #5c4733;text-align:center;font-size:0.8rem;color:#a88c6e;">
+                Made with ❤️ for the families of Jaipur
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="#" onclick="openWhatsApp(); return false;" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+        <span>💬</span>
+    </a>
+
+    <script>
+        const menuData = [
+            {
+                category: "Breads",
+                items: [
+                    {
+                        name: "Whole Wheat Loaf",
+                        price: "₹60",
+                        unit: "500g",
+                        desc: "Our signature daily bread — soft, naturally fermented and perfect for toast or sandwiches."
+                    },
+                    {
+                        name: "Sourdough",
+                        price: "₹90",
+                        unit: "400g",
+                        desc: "Tangy, crusty sourdough with rich flavour."
+                    },
+                    {
+                        name: "Multigrain",
+                        price: "₹75",
+                        unit: "450g",
+                        desc: "Oats, flax, sesame and sunflower seeds baked into a nourishing loaf."
+                    },
+                    {
+                        name: "Masala Bread",
+                        price: "₹70",
+                        unit: "400g",
+                        desc: "Soft bread with cumin, coriander and mild chilli."
+                    }
+                ]
+            },
+            {
+                category: "Cookies &amp; Biscuits",
+                items: [
+                    {
+                        name: "Almond Cookies",
+                        price: "₹180",
+                        unit: "250g",
+                        desc: "Buttery, crisp shortbread packed with roasted almonds."
+                    },
+                    {
+                        name: "Dark Chocolate Chunk",
+                        price: "₹220",
+                        unit: "300g",
+                        desc: "Rich cocoa cookies loaded with dark chocolate chunks."
+                    },
+                    {
+                        name: "Jeera Biscuits",
+                        price: "₹150",
+                        unit: "400g",
+                        desc: "Traditional salty cumin biscuits — perfect with evening chai."
+                    },
+                    {
+                        name: "Coconut Macaroons",
+                        price: "₹190",
+                        unit: "250g",
+                        desc: "Chewy coconut bites with a hint of cardamom."
+                    }
+                ]
+            },
+            {
+                category: "Pastries",
+                items: [
+                    {
+                        name: "Chocolate Éclair",
+                        price: "₹45",
+                        unit: "each",
+                        desc: "Choux pastry filled with eggless chocolate cream and topped with ganache."
+                    },
+                    {
+                        name: "Vanilla Bean Muffin",
+                        price: "₹55",
+                        unit: "each",
+                        desc: "Moist muffins with vanilla and a touch of orange zest."
+                    },
+                    {
+                        name: "Mango Danish",
+                        price: "₹80",
+                        unit: "each",
+                        desc: "Flaky pastry with fresh seasonal mango compote."
+                    }
+                ]
+            },
+            {
+                category: "Signature Cakes",
+                items: [
+                    {
+                        name: "Mango Bliss",
+                        price: "₹720",
+                        unit: "per kg",
+                        desc: "Fresh mango sponge, mango cream and mango pieces."
+                    },
+                    {
+                        name: "Chocolate Truffle",
+                        price: "₹850",
+                        unit: "per kg",
+                        desc: "Rich chocolate sponge with silky eggless chocolate ganache."
+                    },
+                    {
+                        name: "Rose Pistachio",
+                        price: "₹780",
+                        unit: "per kg",
+                        desc: "Delicate rose flavoured sponge with pistachio cream and rose petals."
+                    },
+                    {
+                        name: "Classic Vanilla",
+                        price: "₹650",
+                        unit: "per kg",
+                        desc: "Light and fluffy vanilla bean cake with vanilla buttercream."
+                    }
+                ]
+            }
+        ];
+        
+        function renderMenu() {
+            const container = document.getElementById('menu-list');
+            let html = '';
+            
+            menuData.forEach(category => {
+                html += `
+                    <div class="menu-category">
+                        <h2>${category.category}</h2>
+                        <div class="menu-items">
+                `;
+                
+                category.items.forEach(item => {
+                    html += `
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <div class="item-name">${item.name}</div>
+                                <div>
+                                    <span class="item-price">${item.price}</span>
+                                    <span class="item-unit">/${item.unit}</span>
+                                </div>
+                            </div>
+                            <p class="item-desc">${item.desc}</p>
+                            <a onclick="orderProduct(this); return false;" href="#" style="margin-top:1.25rem;display:inline-flex;align-items:center;gap:8px;color:var(--primary);font-weight:600;text-decoration:none;font-size:0.95rem;">
+                                Order via WhatsApp →
+                            </a>
+                        </div>
+                    `;
+                });
+                
+                html += `</div></div>`;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+        }
+        
+        function openWhatsApp(isCustom = false) {
+            let message = "Hello%20Sunrise%20Bakery!%20I%20would%20like%20to%20place%20an%20order.";
+            if (isCustom) {
+                message = "Hello!%20I%27m%20interested%20in%20a%20custom%20eggless%20cake%20for%20a%20special%20occasion.";
+            }
+            const url = `https://wa.me/919000000000?text=${message}`;
+            window.open(url, '_blank');
+        }
+        
+        function orderProduct(el) {
+            let productName = '';
+            const nameEl = el.closest('.menu-item') ? el.closest('.menu-item').querySelector('.item-name') : null;
+            if (nameEl) productName = nameEl.textContent;
+            const message = `Hello!%20I%27d%20like%20to%20order%20${encodeURIComponent(productName)}.`;
+            const url = `https://wa.me/919000000000?text=${message}`;
+            window.open(url, '_blank');
+        }
+        
+        // Close mobile menu when clicking a link
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('active') && !e.target.closest('header')) {
+                menu.classList.remove('active');
+            }
+        });
+        
+        // Keyboard escape support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const menu = document.getElementById('mobile-menu');
+                if (menu.classList.contains('active')) menu.classList.remove('active');
+            }
+        });
+        
+        // Add reduced motion support
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .blob { animation: none !important; }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Render menu and add structured data
+        window.onload = function() {
+            renderMenu();
+            
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Bakery",
+                "name": "Sunrise Bakery",
+                "description": "Family bakery in Jaipur’s C-Scheme baking fresh bread, eggless cakes and cookies daily.",
+                "url": "https://sunrise-bakery.github.io/sunrise-bakery/menu.html",
+                "telephone": "+91-90000-00000",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "C-Scheme",
+                    "addressLocality": "Jaipur",
+                    "addressRegion": "Rajasthan",
+                    "addressCountry": "IN"
+                },
+                "openingHours": "Mo-Su 08:00-21:00"
+            });
+            document.head.appendChild(script);
+            
+            console.log('%c✅ Sunrise Bakery menu page ready. All links are relative.', 'color:#b45309; font-family:monospace');
+        };
+    </script>
+</body>
+</html>

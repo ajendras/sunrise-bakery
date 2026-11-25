@@ -1,0 +1,24 @@
+{
+  "name": "Sunrise Bakery",
+  "short_name": "Sunrise Bakery",
+  "description": "Family bakery in Jaipur’s C-Scheme. Fresh bread, 100% eggless cakes and cookies baked daily. Order custom cakes on WhatsApp.",
+  "start_url": "/sunrise-bakery/",
+  "display": "standalone",
+  "background_color": "#f5ede4",
+  "theme_color": "#b45309",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

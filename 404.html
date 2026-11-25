@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Sunrise Bakery</title>
+    <meta name="description" content="Oops! The page you are looking for cannot be found.">
+    <meta property="og:title" content="Page Not Found — Sunrise Bakery">
+    <meta property="og:description" content="Sorry, we couldn’t find that page. Let’s get you back to the fresh bakes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sunrise-bakery.github.io/sunrise-bakery/404.html">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            --primary-dark: #854d0e;
+            --sand: #f5ede4;
+            --olive: #5c6b4a;
+            --terracotta: #c56a2e;
+            --text: #3f2e1e;
+            --light: #fffaf0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            color: var(--text);
+            background-color: var(--sand);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+        
+        header {
+            background-color: rgba(245, 237, 228, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e8d9c7;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        
+        .logo svg {
+            width: 38px;
+            height: 38px;
+        }
+        
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: var(--primary);
+            padding: 0.25rem;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 73px;
+            left: 0;
+            right: 0;
+            background: var(--sand);
+            padding: 2rem 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            z-index: 999;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu a {
+            font-size: 1.25rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e8d9c7;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .error-hero {
+            padding: 6rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-hero svg {
+            max-width: 260px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(10px 18px 22px rgba(132, 68, 12, 0.18));
+        }
+        
+        .error-hero h1 {
+            font-size: 6.2rem;
+            line-height: 1;
+            color: var(--terracotta);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .error-hero h2 {
+            font-size: 2.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.25rem;
+        }
+        
+        .error-hero p {
+            font-size: 1.25rem;
+            color: var(--olive);
+            max-width: 420px;
+            margin: 0 auto 3rem;
+        }
+        
+        .suggestions {
+            padding: 2rem 0 6rem;
+        }
+        
+        .suggestions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        
+        .suggestion-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .suggestion-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 30px -10px rgb(181 83 9 / 0.18);
+        }
+        
+        .suggestion-card .emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .suggestion-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgb(181 83 9 / 0.3);
+            margin-top: 2rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(181 83 9 / 0.3);
+        }
+        
+        footer {
+            background: #3f2e1e;
+            color: #f5ede4;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        
+        .footer-col h3 {
+            color: #f5d8b8;
+            margin-bottom: 1.25rem;
+            font-size: 1.35rem;
+        }
+        
+        .footer-col a {
+            color: #f5ede4;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.65rem;
+        }
+        
+        .footer-col a:hover {
+            color: #ffcb91;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #25D366;
+            color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgb(37 211 102 / 0.4);
+            z-index: 9999;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+        
+        .floating-whatsapp span {
+            font-size: 32px;
+            line-height: 1;
+        }
+        
+        .blob {
+            position: absolute;
+            background: rgba(197, 106, 46, 0.08);
+            border-radius: 50% 30% 60% 40%;
+            z-index: 0;
+            animation: blob-float 26s infinite linear;
+        }
+        
+        @keyframes blob-float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(80px, -50px) rotate(360deg); }
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .hamburger {
+                display: none;
+            }
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+        
+        .focus-visible {
+            outline: 4px solid #c56a2e;
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                        <circle cx="19" cy="13" r="7" fill="#f59e0b"/>
+                        <path d="M8 26C8 21 12 18 19 18C26 18 30 21 30 26" stroke="#b45309" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M12 29H26" stroke="#b45309" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                    Sunrise
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="cakes.html">Custom Cakes</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Visit Us</a></li>
+                </ul>
+                
+                <button onclick="toggleMobileMenu()" class="hamburger" aria-label="Toggle menu">☰</button>
+            </nav>
+        </div>
+        
+        <div id="mobile-menu" class="mobile-menu container">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu &amp; Prices</a>
+            <a href="cakes.html">Custom Cakes</a>
+            <a href="about.html">Our Story</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact &amp; Visit</a>
+            <a href="#" onclick="openWhatsApp(); return false;" style="background:#b45309;color:white;border-radius:9999px;padding:1rem 2rem;text-align:center;margin-top:1rem;">Order on WhatsApp</a>
+        </div>
+    </header>
+
+    <div class="error-hero">
+        <div class="container">
+            <svg width="260" height="240" viewBox="0 0 260 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="error-svg-title" role="img">
+                <title id="error-svg-title">Lost loaf illustration</title>
+                <!-- Loaf body -->
+                <path d="M60 110 Q90 65 130 78 Q175 62 205 105 Q215 155 185 185 Q130 205 75 175 Q50 145 60 110" fill="#e8b88a" stroke="#b45309" stroke-width="22"/>
+                <!-- Crust lines -->
+                <path d="M78 92 Q110 75 155 88" fill="none" stroke="#c56a2e" stroke-width="11" stroke-linecap="round" opacity="0.35"/>
+                <!-- Question mark -->
+                <text x="175" y="95" font-family="Playfair Display, serif" font-size="92" font-weight="700" fill="#854d0e" opacity="0.75">?</text>
+                <!-- Small crumbs -->
+                <circle cx="45" cy="165" r="9" fill="#d4a46f"/>
+                <circle cx="215" cy="172" r="7" fill="#d4a46f"/>
+            </svg>
+            
+            <h1>404</h1>
+            <h2>Oops! This loaf got lost</h2>
+            <p>The page you’re looking for has either been moved or never existed. Let’s get you back to something fresh and delicious.</p>
+            
+            <a href="index.html" class="btn">Return to homepage</a>
+        </div>
+        
+        <div class="blob" style="width:260px;height:190px;bottom:10%;left:5%;"></div>
+        <div class="blob" style="width:150px;height:220px;top:25%;right:10%;animation-delay:12s;"></div>
+    </div>
+
+    <section class="suggestions">
+        <div class="container">
+            <div style="text-align:center;margin-bottom:3rem;">
+                <h3 style="font-size:1.6rem;color:var(--primary-dark);">Here are some fresh pages instead</h3>
+            </div>
+            
+            <div class="suggestions-grid">
+                <a href="menu.html" class="suggestion-card">
+                    <span class="emoji">🥖</span>
+                    <h3>Our Menu</h3>
+                    <p style="color:#6b553f;font-size:0.95rem;">See our fresh daily breads, cookies and eggless cakes with prices</p>
+                </a>
+                
+                <a href="cakes.html" class="suggestion-card">
+                    <span class="emoji">🎂</span>
+                    <h3>Custom Cakes</h3>
+                    <p style="color:#6b553f;font-size:0.95rem;">Order a personalised eggless cake for your next celebration</p>
+                </a>
+                
+                <a href="contact.html" class="suggestion-card">
+                    <span class="emoji">📍</span>
+                    <h3>Visit Us</h3>
+                    <p style="color:#6b553f;font-size:0.95rem;">Find our bakery in C-Scheme, Jaipur with map and hours</p>
+                </a>
+                
+                <a href="about.html" class="suggestion-card">
+                    <span class="emoji">👵</span>
+                    <h3>Our Story</h3>
+                    <p style="color:#6b553f;font-size:0.95rem;">Baking with love in our family bakery</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color:#f5d8b8;font-size:2rem;margin-bottom:1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 38 38" fill="none">
+                            <circle cx="19" cy="13" r="7" fill="#f5d8b8"/>
+                            <path d="M8 26C8 21 12 18 19 18C26 18 30 21 30 26" stroke="#f5d8b8" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                        Sunrise Bakery
+                    </div>
+                    <p style="max-width:260px;color:#d4b89a;">A small family bakery in Jaipur baking fresh bread, eggless cakes and cookies daily.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="menu.html">Our Menu</a>
+                    <a href="cakes.html">Custom Cakes</a>
+                    <a href="about.html">Our Story</a>
+                    <a href="faq.html">Frequently Asked Questions</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <a href="tel:+919000000000">+91 90000 00000</a>
+                    <a onclick="openWhatsApp(); return false;" href="#">WhatsApp us</a>
+                    <a href="contact.html">Visit the bakery</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Hours</h3>
+                    <div style="color:#d4b89a;line-height:1.8;">
+                        Daily<br>
+                        <strong style="color:#f5ede4;">8:00 am – 9:00 pm</strong>
+                    </div>
+                    <div style="margin-top:2rem;font-size:0.8rem;color:#a88c6e;">
+                        © 2026 Sunrise Bakery<br>
+                        Family owned &amp; run
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top:4rem;padding-top:2rem;border-top:1px solid #5c4733;text-align:center;font-size:0.8rem;color:#a88c6e;">
+                Made with ❤️ for the families of Jaipur
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="#" onclick="openWhatsApp(); return false;" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+        <span>💬</span>
+    </a>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+        }
+        
+        function openWhatsApp() {
+            const message = "Hello%20Sunrise%20Bakery!%20I%20would%20like%20to%20place%20an%20order.";
+            const url = `https://wa.me/919000000000?text=${message}`;
+            window.open(url, '_blank');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close mobile menu when clicking a link
+            document.addEventListener('click', function(e) {
+                const menu = document.getElementById('mobile-menu');
+                if (menu.classList.contains('active') && !e.target.closest('header')) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            // Keyboard escape support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape") {
+                    const menu = document.getElementById('mobile-menu');
+                    if (menu.classList.contains('active')) menu.classList.remove('active');
+                }
+            });
+            
+            // Reduced motion support
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    .blob { animation: none !important; }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            console.log('%c✅ Sunrise Bakery 404 page ready', 'color:#b45309; font-family:monospace');
+        });
+    </script>
+</body>
+</html>
